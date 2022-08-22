@@ -1,6 +1,7 @@
 :root {
   --bg-light: #e6e6e6;
   --bg-accent: #d8a600;
+  --text-dark: #0c0c0c;
 }
 
 *,
@@ -18,6 +19,17 @@ body,
   font-family: 'Oswald', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--text-dark);
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited,
+a:focus,
+a:active {
+  color: var(--text-dark);
 }
 
 .container {
@@ -26,11 +38,14 @@ body,
 }
 
 .header {
+  padding: 1rem 2rem;
+  background-color: var(--bg-accent);
+}
+
+.header__nav {
   display: flex;
   align-items: baseline;
   justify-content: space-between;
-  padding: 1rem 2rem;
-  background-color: var(--bg-accent);
 }
 
 .photos,
