@@ -2,6 +2,8 @@
   --bg-light: #e6e6e6;
   --bg-accent: #d8a600;
   --text-dark: #0c0c0c;
+  --red: #a1332e;
+  --green: #28805e;
 }
 
 *,
@@ -70,8 +72,31 @@ a:active {
   grid-column: span 2;
 }
 
+.image-container {
+  position: relative;
+}
+
 .image {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.favorite,
+.add {
+  position: absolute;
+  top: 0;
+  padding: 0.425rem;
+  background-color: var(--bg-accent);
+  color: var(--text-dark);
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.favorite {
+  left: 0;
+}
+
+.add {
+  right: 0;
 }
