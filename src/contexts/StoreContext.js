@@ -7,6 +7,14 @@ const URL =
 function StoreContextProvider({ children }) {
   const [photos, setPhotos] = useState([]);
 
+  const toggleIsFavorite = (id) => {
+    setPhotos((prev) => {
+      return prev.map((item) =>
+        item.id === id ? { ...item, isFavorite: !item.isFavorite } : item
+      );
+    });
+  };
+
   useEffect(() => {
     fetch(URL)
       .then((response) => {
@@ -21,7 +29,9 @@ function StoreContextProvider({ children }) {
   }, []);
 
   return (
-    <StoreContext.Provider value={{ photos }}>{children}</StoreContext.Provider>
+    <StoreContext.Provider value={{ photos, toggleIsFavorite }}>
+      {children}
+    </StoreContext.Provider>
   );
 }
 
