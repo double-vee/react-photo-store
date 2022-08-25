@@ -1,7 +1,8 @@
 import { useState, useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext";
+import PropTypes from "prop-types";
 
-export function Image({ className, url, id, isFavorite }) {
+function Image({ className, url, id, isFavorite }) {
   const [isHovered, setIsHovered] = useState(false);
   const { toggleIsFavorite } = useContext(StoreContext);
 
@@ -26,3 +27,12 @@ export function Image({ className, url, id, isFavorite }) {
     </div>
   );
 }
+
+Image.propTypes = {
+  className: PropTypes.string,
+  url: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  isFavorite: PropTypes.bool,
+};
+
+export default Image;

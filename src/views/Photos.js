@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext";
-import { Image } from "../components/Image";
+import Image from "../components/Image";
 import { getClassName } from "../utils";
 
 export function Photos() {
