@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 function Image({ className, url, id, isFavorite }) {
   const [isHovered, setIsHovered] = useState(false);
-  const { toggleIsFavorite } = useContext(StoreContext);
+  const { toggleIsFavorite, addToCart } = useContext(StoreContext);
 
   const favIcon = isHovered && (
     <i
@@ -13,7 +13,9 @@ function Image({ className, url, id, isFavorite }) {
     ></i>
   );
 
-  const addIcon = isHovered && <i className="ri-add-circle-line add"></i>;
+  const addIcon = isHovered && (
+    <i onClick={() => addToCart(id)} className="ri-add-circle-line add"></i>
+  );
 
   return (
     <div

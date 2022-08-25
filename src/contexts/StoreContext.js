@@ -6,6 +6,7 @@ const URL =
 
 function StoreContextProvider({ children }) {
   const [photos, setPhotos] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   const toggleIsFavorite = (id) => {
     setPhotos((prev) => {
@@ -13,6 +14,11 @@ function StoreContextProvider({ children }) {
         item.id === id ? { ...item, isFavorite: !item.isFavorite } : item
       );
     });
+  };
+
+  const addToCart = (id) => {
+    const addedItem = photos.find((item) => item.id === id);
+    setCartItems((prev) => [...prev, addedItem]);
   };
 
   useEffect(() => {
@@ -29,7 +35,9 @@ function StoreContextProvider({ children }) {
   }, []);
 
   return (
-    <StoreContext.Provider value={{ photos, toggleIsFavorite }}>
+    <StoreContext.Provider
+      value={{ photos, toggleIsFavorite, addToCart, cartItems }}
+    >
       {children}
     </StoreContext.Provider>
   );
