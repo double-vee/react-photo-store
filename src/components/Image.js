@@ -1,16 +1,17 @@
 import { useState, useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext";
 
-export function Image({ className, url, id }) {
+export function Image({ className, url, id, isFavorite }) {
   const [isHovered, setIsHovered] = useState(false);
   const { toggleIsFavorite } = useContext(StoreContext);
 
   const favIcon = isHovered && (
     <i
       onClick={() => toggleIsFavorite(id)}
-      className="ri-heart-line favorite"
+      className={`ri-heart-${isFavorite ? "fill" : "line"} favorite`}
     ></i>
   );
+
   const addIcon = isHovered && <i className="ri-add-circle-line add"></i>;
 
   return (
