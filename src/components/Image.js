@@ -8,10 +8,17 @@ function Image({ className, url, id, isFavorite }) {
   const { toggleIsFavorite, addToCart, removeFromCart } =
     useContext(StoreContext);
 
-  const favIcon = isHovered && (
+  const favIconEmpty = isHovered && !isFavorite && (
     <i
       onClick={() => toggleIsFavorite(id)}
-      className={`ri-heart-${isFavorite ? "fill" : "line"} favorite`}
+      className="ri-heart-line favorite"
+    ></i>
+  );
+
+  const favIconFull = isFavorite && (
+    <i
+      onClick={() => toggleIsFavorite(id)}
+      className="ri-heart-fill favorite"
     ></i>
   );
 
@@ -42,7 +49,8 @@ function Image({ className, url, id, isFavorite }) {
       className={`${className ? className : ""} image-container`}
     >
       <img src={url} alt="" className="image" />
-      {favIcon}
+      {favIconEmpty}
+      {favIconFull}
       {addIcon}
       {cartIcon}
     </div>
