@@ -21,6 +21,10 @@ function StoreContextProvider({ children }) {
     setCartItems((prev) => [...prev, addedItem]);
   };
 
+  const removeFromCart = (id) => {
+    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  };
+
   useEffect(() => {
     fetch(URL)
       .then((response) => {
@@ -36,7 +40,7 @@ function StoreContextProvider({ children }) {
 
   return (
     <StoreContext.Provider
-      value={{ photos, toggleIsFavorite, addToCart, cartItems }}
+      value={{ photos, toggleIsFavorite, addToCart, cartItems, removeFromCart }}
     >
       {children}
     </StoreContext.Provider>
