@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 
 function Image({ className, url, id, isFavorite }) {
   const [isHovered, setIsHovered] = useState(false);
-  const [isInCart, setIsInCart] = useState(false);
-  const { toggleIsFavorite, addToCart, removeFromCart } =
+  const { toggleIsFavorite, cartItems, addToCart, removeFromCart } =
     useContext(StoreContext);
 
   const favIconEmpty = isHovered && !isFavorite && (
@@ -22,23 +21,16 @@ function Image({ className, url, id, isFavorite }) {
     ></i>
   );
 
+  const isInCart = cartItems.find((item) => item.id === id);
+
   const addIcon = isHovered && !isInCart && (
-    <i
-      onClick={() => {
-        addToCart(id);
-        setIsInCart(true);
-      }}
-      className="ri-add-circle-line add"
-    ></i>
+    <i onClick={() => addToCart(id)} className="ri-add-circle-line add"></i>
   );
 
   const cartIcon = isInCart && (
     <i
-      onClick={() => {
-        removeFromCart(id);
-        setIsInCart(false);
-      }}
-      className="ri-shopping-cart-fill cart"
+      onClick={() => removeFromCart(id)}
+      className="ri-shopping-cart-fill add"
     ></i>
   );
 
