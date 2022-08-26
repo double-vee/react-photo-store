@@ -83,8 +83,7 @@ a:active {
 }
 
 .favorite,
-.add,
-.cart {
+.add {
   position: absolute;
   top: 0;
   padding: 0.425rem;
@@ -98,7 +97,26 @@ a:active {
   left: 0;
 }
 
-.add,
-.cart {
+.add {
   right: 0;
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cart__image {
+  width: 50%;
+}
+
+.cart__price {
+  font-size: 1.25rem;
 }
