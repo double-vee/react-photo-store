@@ -83,7 +83,8 @@ a:active {
 }
 
 .favorite,
-.add {
+.add,
+.cart {
   position: absolute;
   top: 0;
   padding: 0.425rem;
@@ -97,6 +98,7 @@ a:active {
   left: 0;
 }
 
-.add {
+.add,
+.cart {
   right: 0;
 }

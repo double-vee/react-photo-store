@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 
 function Image({ className, url, id, isFavorite }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
   const { toggleIsFavorite, addToCart } = useContext(StoreContext);
 
   const favIcon = isHovered && (
@@ -13,9 +14,17 @@ function Image({ className, url, id, isFavorite }) {
     ></i>
   );
 
-  const addIcon = isHovered && (
-    <i onClick={() => addToCart(id)} className="ri-add-circle-line add"></i>
+  const addIcon = isHovered && !isInCart && (
+    <i
+      onClick={() => {
+        addToCart(id);
+        setIsInCart(true);
+      }}
+      className="ri-add-circle-line add"
+    ></i>
   );
+
+  const cartIcon = isInCart && <i className="ri-shopping-cart-fill cart"></i>;
 
   return (
     <div
@@ -26,6 +35,7 @@ function Image({ className, url, id, isFavorite }) {
       <img src={url} alt="" className="image" />
       {favIcon}
       {addIcon}
+      {cartIcon}
     </div>
   );
 }
