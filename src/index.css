@@ -111,12 +111,29 @@ a:active {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px dashed var(--text-dark);
 }
 
 .cart__image {
-  width: 50%;
+  width: 50vw;
+}
+
+.cart__details {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .cart__price {
   font-size: 1.25rem;
+  line-height: 0%;
+}
+
+.cart__btn--delete {
+  padding: 0.425rem;
+  padding-right: 0;
+  color: var(--red);
+  font-size: 1.25rem;
+  cursor: pointer;
 }

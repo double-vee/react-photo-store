@@ -1,15 +1,11 @@
 import { useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext";
+import { CartItem } from "../components/CartItem";
 
 export function Cart() {
   const { cartItems } = useContext(StoreContext);
 
-  const items = cartItems.map((item) => (
-    <div key={item.id} className="cart-item">
-      <img src={item.url} alt="" className="cart__image image" />
-      <p className="cart__price">$6</p>
-    </div>
-  ));
+  const items = cartItems.map((item) => <CartItem key={item.id} {...item} />);
 
   return (
     <main className="cart">
