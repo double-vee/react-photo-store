@@ -10,7 +10,9 @@ export function Cart() {
   return (
     <main className="cart">
       <h1 className="cart__title">Check out</h1>
-      {items}
+      <div className="cart__items">{items}</div>
+      <p className="cart__total-cost">Total: $0</p>
+      <button className="cart__btn--order">Place order</button>
     </main>
   );
 }
