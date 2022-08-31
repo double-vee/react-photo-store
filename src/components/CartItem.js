@@ -1,7 +1,8 @@
 import { useContext } from "react";
 import { StoreContext } from "../contexts/StoreContext";
+import PropTypes from "prop-types";
 
-export const CartItem = ({ id, url }) => {
+const CartItem = ({ id, url }) => {
   const { removeFromCart } = useContext(StoreContext);
 
   return (
@@ -17,3 +18,10 @@ export const CartItem = ({ id, url }) => {
     </div>
   );
 };
+
+CartItem.propTypes = {
+  url: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+};
+
+export default CartItem;

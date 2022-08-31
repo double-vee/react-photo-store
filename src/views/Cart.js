@@ -1,12 +1,11 @@
 import { useContext, useState } from "react";
 import { StoreContext } from "../contexts/StoreContext";
-import { CartItem } from "../components/CartItem";
+import CartItem from "../components/CartItem";
 import { Link } from "react-router-dom";
 
 export function Cart() {
   const { cartItems, setCartItems } = useContext(StoreContext);
   const [ordered, setOrdered] = useState(false);
-  console.log(ordered);
 
   const items = cartItems.map((item) => <CartItem key={item.id} {...item} />);
 
