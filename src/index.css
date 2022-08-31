@@ -157,6 +157,10 @@ a:active {
   color: var(--red);
 }
 
+.cart__empty a {
+  text-decoration: underline;
+}
+
 .cart__total-cost {
   margin: 1rem 0;
   text-align: end;
