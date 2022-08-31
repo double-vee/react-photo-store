@@ -8,13 +8,18 @@ export function Cart() {
 
   const items = cartItems.map((item) => <CartItem key={item.id} {...item} />);
 
+  const totalCost = (6 * cartItems.length).toLocaleString("en-US", {
+    style: "currency",
+    currency: "USD",
+  });
+
   return (
     <main className="cart">
       <h1 className="cart__title">Check out</h1>
       {items.length > 0 ? (
         <div className="cart__items">
           {items}
-          <p className="cart__total-cost">Total: $0</p>
+          <p className="cart__total-cost">Total: {totalCost}</p>
           <button className="cart__btn--order">Place order</button>
         </div>
       ) : (
