@@ -40,7 +40,14 @@ function StoreContextProvider({ children }) {
 
   return (
     <StoreContext.Provider
-      value={{ photos, toggleIsFavorite, addToCart, cartItems, removeFromCart }}
+      value={{
+        photos,
+        toggleIsFavorite,
+        addToCart,
+        cartItems,
+        setCartItems,
+        removeFromCart,
+      }}
     >
       {children}
     </StoreContext.Provider>

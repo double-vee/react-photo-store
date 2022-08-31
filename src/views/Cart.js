@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { StoreContext } from "../contexts/StoreContext";
 import { CartItem } from "../components/CartItem";
 import { Link } from "react-router-dom";
 
 export function Cart() {
-  const { cartItems } = useContext(StoreContext);
+  const { cartItems, setCartItems } = useContext(StoreContext);
+  const [ordered, setOrdered] = useState(false);
+  console.log(ordered);
 
   const items = cartItems.map((item) => <CartItem key={item.id} {...item} />);
 
@@ -13,6 +15,13 @@ export function Cart() {
     currency: "USD",
   });
 
+  const handleOrder = () => {
+    setOrdered(true);
+    setTimeout(() => {
+      setCartItems([]);
+    }, 3000);
+  };
+
   return (
     <main className="cart">
       <h1 className="cart__title">Check out</h1>
@@ -20,7 +29,17 @@ export function Cart() {
         <div className="cart__items">
           {items}
           <p className="cart__total-cost">Total: {totalCost}</p>
-          <button className="cart__btn--order">Place order</button>
+          <button
+            onClick={handleOrder}
+            className="cart__btn--order"
+            disabled={ordered}
+          >
+            {ordered ? "Ordering..." : "Place order"}
+          </button>
+        </div>
+      ) : ordered ? (
+        <div className="cart__items">
+          <p>Order placed!</p>
         </div>
       ) : (
         <div className="cart__items">
